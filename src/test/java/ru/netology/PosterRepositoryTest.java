@@ -35,9 +35,31 @@ public class PosterRepositoryTest {
 
     @Test
     public void shouldById() {
-        repo.findById(item4.getId());
+        repo.findById(8);
 
-        PosterItem[] expected = {item4};
+        PosterItem[] expected = {item3};
+        PosterItem[] actual = repo.getMovies();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldRemoveById() {
+        repo.removeById(5);
+
+        PosterItem[] expected = {item1, item2, item3, item5};
+        PosterItem[] actual = repo.getMovies();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldRemoveAll() {
+        PosterRepository repo = new PosterRepository();
+
+        repo.removeAll();
+
+        PosterItem[] expected = {};
         PosterItem[] actual = repo.getMovies();
 
         Assertions.assertArrayEquals(expected, actual);

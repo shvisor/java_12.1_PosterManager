@@ -13,6 +13,4 @@ public class PosterManager {
     public void add(PosterItem movie) {
         repo.save(movie);
     }
-
-
 }

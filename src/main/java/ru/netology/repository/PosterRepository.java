@@ -30,6 +30,26 @@ public class PosterRepository {
         movies = tmp;
     }
 
+    public void removeById(int id) {
+        PosterItem[] tmp = new PosterItem[movies.length - 1];
+        int index = 0;
+        for (PosterItem movie : movies) {
+            if (movie.getId() != id) {
+                tmp[index] = movie;
+                index++;
+            }
+        }
+        movies = tmp;
+    }
+
+    public void removeAll() {
+        PosterItem[] tmp = new PosterItem[movies.length];
+        if (movies.length == 0) {
+            System.out.println("Репозиторий пуст");
+        }
+        movies = tmp;
+    }
+
     public PosterItem[] getMovies() {
         return movies;
     }
