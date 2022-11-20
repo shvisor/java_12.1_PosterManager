@@ -19,33 +19,33 @@ public class PosterRepository {
     }
 
     public void findById(int id) {
-        PosterItem[] tmp = new PosterItem[1];
-        int index = 0;
-        for (PosterItem movie : movies) {
-            if (movie.getId() == id) {
-                tmp[index] = movie;
+        PosterItem[] tmp = new PosterItem[1]; // т.к. с определенным id может быть один элемент, длину массива указываем 1
+        int index = 0; // задаем индекс для ячеек массива movies
+        for (PosterItem movie : movies) { // перебираем массив movies
+            if (movie.getId() == id) { // если id элемента равно искомому id
+                tmp[index] = movie; // то кладем в ячейку элемент movie
                 index++;
             }
         }
-        movies = tmp;
+        movies = tmp; // присваиваем массиву movies значение массива tmp, с элементом id которго равно искомому id
     }
 
     public void removeById(int id) {
-        PosterItem[] tmp = new PosterItem[movies.length - 1];
-        int index = 0;
-        for (PosterItem movie : movies) {
-            if (movie.getId() != id) {
-                tmp[index] = movie;
+        PosterItem[] tmp = new PosterItem[movies.length - 1]; // т.к. удаляем ячейку с искомым id, длина массива будет короче на 1
+        int index = 0; // задаем индекс для ячеек массива movies
+        for (PosterItem movie : movies) { // перебираем массив movies
+            if (movie.getId() != id) { // если id элемента не равно искомому id
+                tmp[index] = movie; // то кладем в ячейку элемент movie
                 index++;
             }
         }
-        movies = tmp;
+        movies = tmp; // присваиваем массиву movies значение массива tmp, без элемента id которго равно искомому id
     }
 
     public void removeAll() {
         PosterItem[] tmp = new PosterItem[movies.length];
-        if (movies.length == 0) {
-            System.out.println("Репозиторий пуст");
+        if (movies.length == 0) { // если массив пустой
+            System.out.println("Репозиторий пуст"); // то выводим данный текст
         }
         movies = tmp;
     }
