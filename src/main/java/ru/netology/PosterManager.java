@@ -1,39 +1,31 @@
 package ru.netology;
 
+import ru.netology.domain.PosterItem;
+import ru.netology.repository.PosterRepository;
+
 public class PosterManager {
-    private String[] movies = new String[0]; // менеджер не содержит фильмы после создания
-    private int defaultCountMovie = 10; // значение количества фильмов по умолчанию
+    private PosterRepository repo;
 
-    public PosterManager(int defaultCountMovie) { // конструктор с изменяемым количеством фильмов
-        this.defaultCountMovie = defaultCountMovie;
+    public PosterManager(PosterRepository repo) {
+        this.repo = repo;
     }
 
-    public PosterManager() { // конструктор со значением количества фильмов по умолчанию
+    public void add(PosterItem movie) {
+        repo.save(movie);
     }
 
-    public void add(String movie) {
-        String[] tmp = new String[movies.length + 1];
-        for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies[i];
-        }
-        tmp[tmp.length - 1] = movie;
-        movies = tmp;
-    }
-
-    public String[] findAll() {
-        return movies;
-    }
-
-    public String[] findLast() {
+    public PosterItem[] findLast() {
+        PosterItem[] all = repo.getMovies();
         int resultLength;
-        if (movies.length != defaultCountMovie) {
-            resultLength = movies.length;
+        int defaultCountMovie = 10;
+        if (all.length != defaultCountMovie) {
+            resultLength = all.length;
         } else {
             resultLength = defaultCountMovie;
         }
-        String[] tmp = new String[resultLength];
+        PosterItem[] tmp = new PosterItem[resultLength];
         for (int i = 0; i < tmp.length; i++) {
-            tmp[i] = movies[movies.length - 1 - i];
+            tmp[i] = all[all.length - 1 - i];
         }
         return tmp;
     }
