@@ -18,7 +18,7 @@ public class PosterManager {
         PosterItem[] all = repo.getMovies();
         int resultLength;
         int defaultCountMovie = 10;
-        if (all.length != defaultCountMovie) {
+        if (all.length < defaultCountMovie) {
             resultLength = all.length;
         } else {
             resultLength = defaultCountMovie;
