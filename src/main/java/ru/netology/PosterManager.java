@@ -2,13 +2,14 @@ package ru.netology;
 
 public class PosterManager {
     private String[] movies = new String[0]; // менеджер не содержит фильмы после создания
-    private int defaultCountMovie = 10; // значение количества фильмов по умолчанию
+    private int defaultCountMovie; // значение количества фильмов по умолчанию
 
     public PosterManager(int defaultCountMovie) { // конструктор с изменяемым количеством фильмов
         this.defaultCountMovie = defaultCountMovie;
     }
 
     public PosterManager() { // конструктор со значением количества фильмов по умолчанию
+        this.defaultCountMovie = 10;
     }
 
     public void add(String movie) {
@@ -26,7 +27,7 @@ public class PosterManager {
 
     public String[] findLast() {
         int resultLength;
-        if (movies.length != defaultCountMovie) {
+        if (movies.length < defaultCountMovie) {
             resultLength = movies.length;
         } else {
             resultLength = defaultCountMovie;

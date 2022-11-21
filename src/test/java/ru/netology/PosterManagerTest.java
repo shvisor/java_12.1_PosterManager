@@ -17,8 +17,6 @@ public class PosterManagerTest {
     @Test
     public void shouldAllPoster() {
 
-        manager.findAll();
-
         String[] expected = {"Movie 1", "Movie 2", "Movie 3"};
         String[] actual = manager.findAll();
 
@@ -28,8 +26,6 @@ public class PosterManagerTest {
     @Test
     public void shouldPosterEqualDefaultLimit() {
         PosterManager manager = new PosterManager();
-
-        manager.findLast();
 
         manager.add("Movie 1");
         manager.add("Movie 2");
@@ -50,7 +46,6 @@ public class PosterManagerTest {
 
     @Test
     public void shouldPosterEqualLimit() {
-        manager.findLast();
 
         manager.add("Movie 4");
         manager.add("Movie 5");
@@ -63,7 +58,6 @@ public class PosterManagerTest {
 
     @Test
     public void shouldPosterBelowLimit() {
-        manager.findLast();
 
         String[] expected = {"Movie 3", "Movie 2", "Movie 1"};
         String[] actual = manager.findLast();
@@ -73,14 +67,13 @@ public class PosterManagerTest {
 
     @Test
     public void shouldPosterAboveLimit() {
-        manager.findLast();
 
         manager.add("Movie 4");
         manager.add("Movie 5");
         manager.add("Movie 6");
         manager.add("Movie 7");
 
-        String[] expected = {"Movie 7", "Movie 6", "Movie 5", "Movie 4", "Movie 3", "Movie 2", "Movie 1"};
+        String[] expected = {"Movie 7", "Movie 6", "Movie 5", "Movie 4", "Movie 3"};
         String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
